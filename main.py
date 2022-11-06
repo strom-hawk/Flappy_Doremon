@@ -16,6 +16,7 @@ PLAYER = '/resources/sprites/bird.png'
 BACKGROUND = '/resources/sprites/background.png'
 PIPE = '/resources/sprites/pipe.png'
 
+
 if __name__ == "__main__":
     # This will be the main function from where game will start
     pygame.init()
@@ -33,3 +34,10 @@ if __name__ == "__main__":
         pygame.image.load('/resources/sprites/8.png').convert_alpha(),
         pygame.image.load('/resources/sprites/9.png').convert_alpha(),
     }
+
+    GAME_SPRITES['message'] = pygame.image.load('/resources/sprites/message.png').convert_alpha()
+    GAME_SPRITES['base'] = pygame.image.load('/resources/sprites/base.png').convert_alpha()
+    GAME_SPRITES['pipe'] = (
+        pygame.transform.rotate(pygame.image.load(PIPE).convert_alpha(), 180),
+        pygame.image.load(PIPE).convert_alpha()
+    )
