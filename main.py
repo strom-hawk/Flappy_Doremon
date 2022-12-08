@@ -5,8 +5,8 @@ from pygame.locals import *
 
 # GLOBAL VARIABLES
 FPS = 32
-SCREEN_WIDTH = 289
-SCREEN_HEIGHT = 511
+SCREEN_WIDTH = 288
+SCREEN_HEIGHT = 512
 SCREEN = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 GROUND_Y = SCREEN_HEIGHT * 0.8
 GAME_SPRITES = {}
@@ -14,6 +14,30 @@ GAME_SOUND = {}
 PLAYER = 'resources/sprites/bird.png'
 BACKGROUND = 'resources/sprites/background.png'
 PIPE = 'resources/sprites/pipe.png'
+
+def welcomeScreen():
+    playerX = int(SCREEN_WIDTH/5)
+    playerY = int((SCREEN_HEIGHT - GAME_SPRITES['player'].get_height())/2)
+    
+    messageX = int((SCREEN_WIDTH - GAME_SPRITES['message'].get_width())/2)
+    messageY = int(SCREEN_HEIGHT * 0.3)
+
+    baseX = 0
+
+    while True:
+        for event in pygame.event.get():
+            if(event.type == QUIT or (event.type == KEYDOWN and event.type == K_ESCAPE)):
+                pygame.quit()
+                sys.exit()
+            else:
+                SCREEN.blit(GAME_SPRITES['background'],(0,0))
+                SCREEN.blit(GAME_SPRITES['player'],(playerX, playerY))
+                SCREEN.blit(GAME_SPRITES['message'],(messageX, messageY))
+                SCREEN.blit(GAME_SPRITES['base'],(baseX, GROUND_Y))
+
+                pygame.display.update()
+                FPSCLOCK.tick(FPS)
+
 
 
 if __name__ == "__main__":
@@ -51,5 +75,5 @@ if __name__ == "__main__":
     GAME_SOUND['wing'] = pygame.mixer.Sound('resources/audio/wing.wav')
 
     while True:
-        pass
+        welcomeScreen()
 
