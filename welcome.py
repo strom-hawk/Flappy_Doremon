@@ -1,4 +1,4 @@
-from gameconstants import *
+from gameConstants import *
 import sys
 
 def welcomeScreen(SCREEN, FPSCLOCK):
@@ -15,7 +15,7 @@ def welcomeScreen(SCREEN, FPSCLOCK):
             if(event.type == QUIT or (event.type == KEYDOWN and event.key == K_ESCAPE)):
                 pygame.quit()
                 sys.exit()
-            elif(event.type == KEYDOWN and event.key == K_UP):
+            elif(event.type == KEYDOWN and (event.key == K_UP or event.key == K_SPACE)):
                 print("game yet to be started")
                 pass
             else:
