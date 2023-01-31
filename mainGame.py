@@ -8,8 +8,8 @@ def getRandomPipe():
     pipeX = SCREEN_WIDTH + 10
     y1 = pipeHeight - y2 + offSet
     pipe = [
-        {'x': pipeX, 'y': -y1},
-        {'x': pipeX, 'y': y2}
+        {'x': pipeX, 'y': -y1}, #upper pipe
+        {'x': pipeX, 'y': y2} #lower pipe
     ]
     return pipe
 
@@ -22,3 +22,21 @@ def mainGame():
 
     newPipe1 = getRandomPipe()
     newPipe2 = getRandomPipe()
+
+    #list of upper pipes
+    upperPipes = [
+        {'x': SCREEN_WIDTH + 200, 'y': newPipe1[0]['y']},
+        {'x': SCREEN_WIDTH + 200 + (SCREEN_WIDTH/2), 'y': newPipe2[1]['y']},
+    ]
+    #list of lower pipes
+    lowerPipes = [
+        {'x': SCREEN_WIDTH + 200, 'y': newPipe1[0]['y']},
+        {'x': SCREEN_WIDTH + 200 + (SCREEN_WIDTH/2), 'y': newPipe2[1]['y']},
+    ]
+
+    print(upperPipes)
+    print(lowerPipes)
+
+
+    pipeVelocityX = 4
+

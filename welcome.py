@@ -17,7 +17,7 @@ def welcomeScreen(SCREEN, FPSCLOCK):
                 sys.exit()
             elif(event.type == KEYDOWN and (event.key == K_UP or event.key == K_SPACE)):
                 print("game yet to be started")
-                pass
+                return
             else:
                 SCREEN.blit(GAME_SPRITES['background'],(0,0))
                 SCREEN.blit(GAME_SPRITES['player'],(playerX, playerY))

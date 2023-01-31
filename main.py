@@ -1,6 +1,7 @@
 import sys
 from gameConstants import *
 from welcome import *
+from mainGame import *
 import pygame
 from pygame.locals import *
 
@@ -42,4 +43,4 @@ if __name__ == "__main__":
 
     while True:
         welcomeScreen(SCREEN, FPSCLOCK)
-
+        mainGame()
