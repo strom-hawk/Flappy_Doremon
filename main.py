@@ -43,4 +43,4 @@ if __name__ == "__main__":
 
     while True:
         welcomeScreen(SCREEN, FPSCLOCK)
-        mainGame()
+        mainGame(SCREEN, FPSCLOCK)
