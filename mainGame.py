@@ -72,6 +72,7 @@ def mainGame(SCREEN, FPSCLOCK):
             if(pipeMidPos <= playerMidPos < pipeMidPos + 4):
                 score += 1
                 print(f"Your score is: {score}")
+                GAME_SOUND['point'].play()
             
         if(playerVelocityY < playerMaxVelocityY and not playerFlapped):
             playerVelocityY += playerAccY
