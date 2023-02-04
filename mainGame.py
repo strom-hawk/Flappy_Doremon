@@ -3,6 +3,9 @@ import random
 import sys
 import time
 
+'''
+Function to check if the bird collides with the sky or the ground or the pipes.
+'''
 def hasCollided(playerX, playerY, upperPipes, lowerPipes):
     if(playerY > GROUND_Y -25 or playerY < 0):
         GAME_SOUND['hit'].play()
@@ -24,6 +27,9 @@ def hasCollided(playerX, playerY, upperPipes, lowerPipes):
 
     return False
 
+'''
+Function to generate random pipes.
+'''
 def getRandomPipe():
     pipeHeight = GAME_SPRITES['pipe'][0].get_height()
     offSet = SCREEN_HEIGHT/4
