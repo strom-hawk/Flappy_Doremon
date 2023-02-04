@@ -1,10 +1,32 @@
 from gameConstants import *
 import random
 import sys
+import time
+
+def hasCollided(playerX, playerY, upperPipes, lowerPipes):
+    if(playerY > GROUND_Y -25 or playerY < 0):
+        GAME_SOUND['hit'].play()
+        time.sleep(2)
+        return True
+
+    for pipe in upperPipes:
+        pipeHeight = GAME_SPRITES['pipe'][0].get_height()
+        if(playerY < pipeHeight + pipe['y'] and abs((playerX-15) - pipe['x']) <= GAME_SPRITES['pipe'][0].get_width()):
+            GAME_SOUND['hit'].play()
+            time.sleep(2)
+            return True
+
+    for pipe in lowerPipes:
+        if(playerY + GAME_SPRITES['player'].get_height() > pipe['y'] and abs((playerX -15) - pipe['x']) < GAME_SPRITES['pipe'][0].get_width()):
+            GAME_SOUND['hit'].play()
+            time.sleep(2)
+            return True
+
+    return False
 
 def getRandomPipe():
     pipeHeight = GAME_SPRITES['pipe'][0].get_height()
-    offSet = SCREEN_HEIGHT/3
+    offSet = SCREEN_HEIGHT/4
     y2 = offSet + random.randrange(0, int(SCREEN_HEIGHT - GAME_SPRITES['base'].get_height() - 1.2 * offSet))
     pipeX = SCREEN_WIDTH + 10
     y1 = pipeHeight - y2 + offSet
@@ -59,7 +81,7 @@ def mainGame(SCREEN, FPSCLOCK):
                     GAME_SOUND['wing'].play()
             
         #Crash test is variable that checks if the player has collided with any of the pipe or not    
-        crashTest = False
+        crashTest = hasCollided(playerX, playerY, upperPipes, lowerPipes)
 
         #Check if player crashed, return the game
         if(crashTest):
