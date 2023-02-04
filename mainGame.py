@@ -109,6 +109,16 @@ def mainGame(SCREEN, FPSCLOCK):
         SCREEN.blit(GAME_SPRITES['base'],(baseX, GROUND_Y))
         SCREEN.blit(GAME_SPRITES['player'],(playerX, playerY))
 
+        myDigits = [int(x) for x in list(str(score))]
+        width = 0
+        for digit in myDigits:
+            width += GAME_SPRITES['numbers'][digit].get_width()
+        
+        xOffSet = (SCREEN_WIDTH - width)/2
+
+        for digit in myDigits:
+            SCREEN.blit(GAME_SPRITES['numbers'][digit], (xOffSet, SCREEN_HEIGHT * 0.12))
+            xOffSet += GAME_SPRITES['numbers'][digit].get_width()
         
         pygame.display.update()
         FPSCLOCK.tick(FPS)
